@@ -10,4 +10,11 @@ public interface DeviceModelService {
     List<DeviceModelDTO> getAllDeviceModels();
 
     DeviceModelDTO getDeviceModelById(Long id);
+
+    DeviceModelDTO createDeviceModel(DeviceModelDTO deviceModelDTO);
+
+    DeviceModelDTO updateDeviceModel(Long id, DeviceModelDTO deviceModelDTO);
+
+    void deleteDeviceModel(Long id);
+
 }

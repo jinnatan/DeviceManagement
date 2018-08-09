@@ -39,4 +39,27 @@ public class DeviceModelServiceImpl implements DeviceModelService {
         }
 
     }
+
+    @Override
+    public DeviceModelDTO createDeviceModel(final DeviceModelDTO deviceModelDTO) {
+        return saveAndReturnDeviceModelDTO(deviceModelMapper.DeviceModelDTOToDeviceModel(deviceModelDTO));
+    }
+
+    private DeviceModelDTO saveAndReturnDeviceModelDTO(DeviceModel deviceModel) {
+        DeviceModel saved= deviceModelRepository.save(deviceModel);
+        return deviceModelMapper.DeviceModelToDeviceModelDTO(saved);
+    }
+
+
+    @Override
+    public DeviceModelDTO updateDeviceModel(final Long id, final DeviceModelDTO deviceModelDTO) {
+        DeviceModel deviceModel = deviceModelMapper.DeviceModelDTOToDeviceModel(deviceModelDTO);
+        deviceModel.setId(id);
+        return saveAndReturnDeviceModelDTO(deviceModel);
+    }
+
+    @Override
+    public void deleteDeviceModel(final Long id) {
+        deviceModelRepository.deleteById(id);
+    }
 }
