@@ -1,12 +1,20 @@
 package com.jt.devicemanagement.api.DTOs;
 
 import com.jt.devicemanagement.models.OS;
+import io.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class DeviceModelDTO {
     private Long id;
 
+    @ApiModelProperty(required = true)
     private OS os;
+
+    @ApiModelProperty(required = true)
     private String name;
+
     private String description;
 
     public Long getId() {

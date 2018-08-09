@@ -29,9 +29,9 @@ public class Boostrap implements CommandLineRunner {
         deviceModelRepository.save(deviceModel1);
 
         DeviceModel deviceModel2 = new DeviceModel();
-        deviceModel1.setOs(OS.IOS);
-        deviceModel1.setDescription("iPhone x");
-        deviceModel1.setName("IPH1");
+        deviceModel2.setOs(OS.IOS);
+        deviceModel2.setDescription("iPhone x");
+        deviceModel2.setName("IPH1");
         deviceModelRepository.save(deviceModel2);
     }
 

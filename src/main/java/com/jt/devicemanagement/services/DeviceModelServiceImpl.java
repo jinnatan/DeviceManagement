@@ -2,6 +2,7 @@ package com.jt.devicemanagement.services;
 
 import com.jt.devicemanagement.api.DTOs.DeviceModelDTO;
 import com.jt.devicemanagement.api.mappers.DeviceModelMapper;
+import com.jt.devicemanagement.exceptions.EntityNotFoundException;
 import com.jt.devicemanagement.models.DeviceModel;
 import com.jt.devicemanagement.repositories.DeviceModelRepository;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class DeviceModelServiceImpl implements DeviceModelService {
             return deviceModelMapper.DeviceModelToDeviceModelDTO(deviceModel.get());
         }
         else {
-            throw new RuntimeException(); // TODO. Fix this
+            throw new EntityNotFoundException("ID "+ id + " not exist");
         }
 
     }
