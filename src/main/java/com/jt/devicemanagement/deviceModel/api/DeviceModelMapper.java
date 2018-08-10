@@ -1,7 +1,6 @@
-package com.jt.devicemanagement.api.mappers;
+package com.jt.devicemanagement.deviceModel.api;
 
-import com.jt.devicemanagement.api.DTOs.DeviceModelDTO;
-import com.jt.devicemanagement.models.DeviceModel;
+import com.jt.devicemanagement.deviceModel.models.DeviceModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

@@ -1,7 +1,7 @@
-package com.jt.devicemanagement.controllers;
+package com.jt.devicemanagement.deviceModel;
 
-import com.jt.devicemanagement.api.DTOs.DeviceModelDTO;
-import com.jt.devicemanagement.services.DeviceModelService;
+import com.jt.devicemanagement.deviceModel.api.DeviceModelDTO;
+import com.jt.devicemanagement.deviceModel.services.DeviceModelService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;

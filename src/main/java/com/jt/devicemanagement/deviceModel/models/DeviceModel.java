@@ -1,4 +1,4 @@
-package com.jt.devicemanagement.models;
+package com.jt.devicemanagement.deviceModel.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,7 +1,6 @@
-package com.jt.devicemanagement.services;
+package com.jt.devicemanagement.deviceModel.services;
 
-import com.jt.devicemanagement.api.DTOs.DeviceModelDTO;
-import com.jt.devicemanagement.models.DeviceModel;
+import com.jt.devicemanagement.deviceModel.api.DeviceModelDTO;
 
 import java.util.List;
 

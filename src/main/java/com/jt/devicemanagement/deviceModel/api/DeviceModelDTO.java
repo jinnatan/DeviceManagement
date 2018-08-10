@@ -1,10 +1,7 @@
-package com.jt.devicemanagement.api.DTOs;
+package com.jt.devicemanagement.deviceModel.api;
 
-import com.jt.devicemanagement.models.OS;
+import com.jt.devicemanagement.deviceModel.models.OS;
 import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 public class DeviceModelDTO {
     private Long id;

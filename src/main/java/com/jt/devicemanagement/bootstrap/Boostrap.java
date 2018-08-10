@@ -1,8 +1,8 @@
 package com.jt.devicemanagement.bootstrap;
 
-import com.jt.devicemanagement.models.DeviceModel;
-import com.jt.devicemanagement.models.OS;
-import com.jt.devicemanagement.repositories.DeviceModelRepository;
+import com.jt.devicemanagement.deviceModel.models.DeviceModel;
+import com.jt.devicemanagement.deviceModel.models.OS;
+import com.jt.devicemanagement.deviceModel.DeviceModelRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

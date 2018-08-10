@@ -1,10 +1,10 @@
-package com.jt.devicemanagement.services;
+package com.jt.devicemanagement.deviceModel.services;
 
-import com.jt.devicemanagement.api.DTOs.DeviceModelDTO;
-import com.jt.devicemanagement.api.mappers.DeviceModelMapper;
+import com.jt.devicemanagement.deviceModel.api.DeviceModelDTO;
+import com.jt.devicemanagement.deviceModel.api.DeviceModelMapper;
 import com.jt.devicemanagement.exceptions.EntityNotFoundException;
-import com.jt.devicemanagement.models.DeviceModel;
-import com.jt.devicemanagement.repositories.DeviceModelRepository;
+import com.jt.devicemanagement.deviceModel.models.DeviceModel;
+import com.jt.devicemanagement.deviceModel.DeviceModelRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
