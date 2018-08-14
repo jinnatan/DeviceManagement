@@ -4,6 +4,8 @@ import com.jt.devicemanagement.device.DeviceRepository;
 import com.jt.devicemanagement.device.api.DeviceDTO;
 import com.jt.devicemanagement.device.api.DeviceMapper;
 import com.jt.devicemanagement.device.models.Device;
+import com.jt.devicemanagement.deviceModel.api.DeviceModelDTO;
+import com.jt.devicemanagement.deviceModel.models.DeviceModel;
 import com.jt.devicemanagement.exceptions.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -40,22 +42,32 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     @Override
-    public DeviceDTO getDeviceByModelId(final Long id) {
-        return null;
+    public List<DeviceDTO> getDevicesByModelId(final Long id) {
+        return deviceRepository.getDevicesByModelId(id).stream()
+                .map(deviceMapper::DeviceToDeviceDTO).collect(Collectors.toList());
     }
 
     @Override
     public DeviceDTO createDevice(final DeviceDTO deviceDTO) {
-        return null;
+        return saveAndReturnDeviceDTO(deviceMapper.DeviceDTOToDevice(deviceDTO));
+    }
+
+    private DeviceDTO saveAndReturnDeviceDTO(Device device) {
+        Device saved= deviceRepository.save(device);
+        return deviceMapper.DeviceToDeviceDTO(saved);
     }
 
     @Override
     public DeviceDTO updateDevice(final String serialNumber, final DeviceDTO deviceDTO) {
-        return null;
+        Device device = deviceMapper.DeviceDTOToDevice(deviceDTO);
+        device.setSerialNumber(serialNumber);
+        return saveAndReturnDeviceDTO(device);
+
     }
 
     @Override
     public void deleteDevice(final String serialNumber) {
+        deviceRepository.deleteById(serialNumber);
 
     }
 }

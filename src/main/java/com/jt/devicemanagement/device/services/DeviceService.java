@@ -7,7 +7,7 @@ import java.util.List;
 public interface DeviceService {
     List<DeviceDTO> getAllDevices();
     DeviceDTO getDeviceBySerialNumber(String serialNumber);
-    DeviceDTO getDeviceByModelId(Long id);
+    List<DeviceDTO> getDevicesByModelId(Long id);
     DeviceDTO createDevice(DeviceDTO deviceDTO);
     DeviceDTO updateDevice(String serialNumber, DeviceDTO deviceDTO);
     void deleteDevice(String serialNumber);

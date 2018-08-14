@@ -22,7 +22,7 @@ import java.util.List;
 @Api(description = "Device models API")
 public class DeviceModelController {
 
-    public static final String BASE_URL="/api/vi/deviceModels";
+    public static final String BASE_URL="/api/v1/deviceModels";
 
     private DeviceModelService deviceModelService;
 
