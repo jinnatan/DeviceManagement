@@ -1,11 +1,16 @@
 package com.jt.devicemanagement.deviceModel.models;
 
+import com.jt.devicemanagement.device.models.Device;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,6 +27,9 @@ public class DeviceModel {
     private String name;
 
     private String description;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "deviceModel")
+    private List<Device> devices;
 
     public Long getId() {
         return id;
@@ -55,29 +63,11 @@ public class DeviceModel {
         this.description = description;
     }
 
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (!(o instanceof DeviceModel)) return false;
-        final DeviceModel deviceModel = (DeviceModel) o;
-        return getId() == deviceModel.getId() &&
-                getOs() == deviceModel.getOs() &&
-                Objects.equals(getName(), deviceModel.getName()) &&
-                Objects.equals(getDescription(), deviceModel.getDescription());
+    public List<Device> getDevices() {
+        return devices;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getOs(), getName(), getDescription());
-    }
-
-    @Override
-    public String toString() {
-        return "DeviceModel{" +
-                "id=" + id +
-                ", os=" + os +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+    public void setDevices(final List<Device> devices) {
+        this.devices = devices;
     }
 }

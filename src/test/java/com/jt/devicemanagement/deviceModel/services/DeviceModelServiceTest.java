@@ -9,7 +9,6 @@ import com.jt.devicemanagement.exceptions.EntityNotFoundException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.BDDMockito;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -19,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
-import static org.mockito.BDDMockito.given;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.times;
 
@@ -121,7 +120,7 @@ public class DeviceModelServiceTest {
 
     @Test
     public void createDeviceModel() {
-        Mockito.when(deviceModelRepository.save(deviceModel1)).thenReturn(deviceModel1);
+        Mockito.when(deviceModelRepository.save(any())).thenReturn(deviceModel1);
         DeviceModelDTO deviceModelDTO= deviceModelService.createDeviceModel(deviceModelDTO1);
         assertDeviceModelDTO1(deviceModelDTO);
 
@@ -129,7 +128,7 @@ public class DeviceModelServiceTest {
 
     @Test
     public void updateDeviceModel() {
-        Mockito.when(deviceModelRepository.save(deviceModel1)).thenReturn(deviceModel1);
+        Mockito.when(deviceModelRepository.save(any())).thenReturn(deviceModel1);
         DeviceModelDTO deviceModelDTO= deviceModelService.updateDeviceModel(10L, deviceModelDTO1);
         assertDeviceModelDTO1(deviceModelDTO);
     }
