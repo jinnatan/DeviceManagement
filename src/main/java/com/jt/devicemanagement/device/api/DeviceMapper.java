@@ -13,10 +13,12 @@ public interface DeviceMapper {
 
 
     @Mapping(source = "deviceModel", target = "baseModel")
+    @Mapping(source = "user", target = "baseUser")
     DeviceDTO DeviceToDeviceDTO(Device device);
 
 
     @Mapping(source = "baseModel", target = "deviceModel")
+    @Mapping(source = "baseUser", target = "user")
     Device DeviceDTOToDevice(DeviceDTO deviceDTO);
 
 

@@ -5,6 +5,8 @@ import com.jt.devicemanagement.device.models.Device;
 import com.jt.devicemanagement.deviceModel.models.DeviceModel;
 import com.jt.devicemanagement.deviceModel.models.OS;
 import com.jt.devicemanagement.deviceModel.DeviceModelRepository;
+import com.jt.devicemanagement.user.UserRepository;
+import com.jt.devicemanagement.user.models.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -16,12 +18,14 @@ public class Boostrap implements CommandLineRunner {
 
     private final DeviceModelRepository deviceModelRepository;
     private final DeviceRepository deviceRepository;
+    private final UserRepository userRepository;
 
-    public Boostrap(final DeviceModelRepository deviceModelRepository, final DeviceRepository deviceRepository) {
+
+    public Boostrap(final DeviceModelRepository deviceModelRepository, final DeviceRepository deviceRepository, final UserRepository userRepository) {
         this.deviceModelRepository = deviceModelRepository;
         this.deviceRepository = deviceRepository;
+        this.userRepository = userRepository;
     }
-
 
     @Override
     public void run(final String... args) throws Exception {
@@ -35,18 +39,19 @@ public class Boostrap implements CommandLineRunner {
         deviceModel1.setDescription("Samsung Galaxy 9");
         deviceModel1.setName("AND1");
 
+        User user1 = new User();
+        user1.setFirstName("Jon");
+        user1.setLastName("Smith");
 
         Device device1 = new Device();
         device1.setAssetNumber("SAP123");
         device1.setName("DEV1");
-        device1.setSerialNumber("afdsf-afdasf-qrew");
+        device1.setSerialNumber("afdsf-afdsf-123");
         device1.setDeviceModel(deviceModel1);
-
-//        List<Device> devices = new ArrayList<>();
-//        devices.add(device1);
-//        deviceModel1.setDevices(devices);
+        device1.setUser(user1);
 
         deviceModelRepository.save(deviceModel1);
+        userRepository.save(user1);
         deviceRepository.save(device1);
 
         DeviceModel deviceModel2 = new DeviceModel();
@@ -54,14 +59,20 @@ public class Boostrap implements CommandLineRunner {
         deviceModel2.setDescription("iPhone x");
         deviceModel2.setName("IPH1");
 
+        User user2 = new User();
+        user2.setFirstName("Kate");
+        user2.setLastName("Hillmane");
 
         Device device2 = new Device();
         device2.setAssetNumber("SAP234");
         device2.setName("DEV2");
-        device2.setSerialNumber("afdsf-afdasf-afds");
+        device2.setSerialNumber("afdsf-afdsf-234");
         device2.setDeviceModel(deviceModel2);
+        device2.setUser(user2);
+
 
         deviceModelRepository.save(deviceModel2);
+        userRepository.save(user2);
         deviceRepository.save(device2);
     }
 

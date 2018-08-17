@@ -1,6 +1,7 @@
 package com.jt.devicemanagement.device.models;
 
 import com.jt.devicemanagement.deviceModel.models.DeviceModel;
+import com.jt.devicemanagement.user.models.User;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
@@ -23,6 +24,9 @@ public class Device {
 
     @ManyToOne
     private DeviceModel deviceModel;
+
+    @ManyToOne
+    private User user;
 
 
     public String getAssetNumber() {
@@ -55,5 +59,13 @@ public class Device {
 
     public void setDeviceModel(final DeviceModel deviceModel) {
         this.deviceModel = deviceModel;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(final User user) {
+        this.user = user;
     }
 }

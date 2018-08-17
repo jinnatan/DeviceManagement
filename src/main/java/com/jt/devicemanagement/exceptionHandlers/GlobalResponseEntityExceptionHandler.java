@@ -21,6 +21,11 @@ public class GlobalResponseEntityExceptionHandler extends ResponseEntityExceptio
         return new ResponseEntity<Object>(exception.getMessage(), HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler({Exception.class})
+    public ResponseEntity<Object> HandleAllExceptions(Exception exception, WebRequest request) {
+        return new ResponseEntity<Object>(exception.getMessage() + "for request" + request.getDescription(true), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     // Doesn't work
 //    @ExceptionHandler({ConstraintViolationException.class, TransactionSystemException.class})
 //    public ResponseEntity<Object> HandleConstraintViolationException(ConstraintViolationException exception, WebRequest request) {
