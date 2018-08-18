@@ -17,7 +17,6 @@ import java.util.Objects;
 public class DeviceModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @NotNull

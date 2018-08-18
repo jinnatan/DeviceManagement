@@ -33,13 +33,15 @@ public class DeviceModelServiceImplIntegrationTest {
     public void createDeviceModel() {
         final String desc = "Desc";
         final String name = "Name";
+        final long id = 1L;
         DeviceModelDTO deviceModelDTO = new DeviceModelDTO();
+        deviceModelDTO.setId(1L);
         deviceModelDTO.setOs(OS.ANDROID);
         deviceModelDTO.setDescription(desc);
         deviceModelDTO.setName(name);
         deviceModelService.createDeviceModel(deviceModelDTO);
 
-        DeviceModelDTO updatedDeviceModelDTO = deviceModelService.getDeviceModelById(1L);
+        DeviceModelDTO updatedDeviceModelDTO = deviceModelService.getDeviceModelById(id);
 
         assertEquals(desc, updatedDeviceModelDTO.getDescription());
         assertEquals(name, updatedDeviceModelDTO.getName());
@@ -49,12 +51,13 @@ public class DeviceModelServiceImplIntegrationTest {
 
     @Test
     public void updateDeviceModel() {
+        final long id = 2L;
         DeviceModelDTO deviceModelDTO = new DeviceModelDTO();
         deviceModelDTO.setOs(OS.IOS);
         deviceModelDTO.setDescription("Desc");
         deviceModelDTO.setName("Name");
-        Long id = deviceModelService.createDeviceModel(deviceModelDTO).getId();
-        List<DeviceModelDTO> deviceModelDTOS = deviceModelService.getAllDeviceModels();
+        deviceModelDTO.setId(id);
+        deviceModelService.createDeviceModel(deviceModelDTO);
 
         final String updatedDesc = "Updated Desc";
         final String updatedName = "Updated Name";

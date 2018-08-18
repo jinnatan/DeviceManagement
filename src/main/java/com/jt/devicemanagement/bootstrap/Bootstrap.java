@@ -35,6 +35,7 @@ public class Bootstrap implements CommandLineRunner {
 
     private void loadDeviceModels() {
         DeviceModel deviceModel1 = new DeviceModel();
+        deviceModel1.setId(1L);
         deviceModel1.setOs(OS.ANDROID);
         deviceModel1.setDescription("Samsung Galaxy 9");
         deviceModel1.setName("AND1");
@@ -55,6 +56,7 @@ public class Bootstrap implements CommandLineRunner {
         deviceRepository.save(device1);
 
         DeviceModel deviceModel2 = new DeviceModel();
+        deviceModel2.setId(2L);
         deviceModel2.setOs(OS.IOS);
         deviceModel2.setDescription("iPhone x");
         deviceModel2.setName("IPH1");

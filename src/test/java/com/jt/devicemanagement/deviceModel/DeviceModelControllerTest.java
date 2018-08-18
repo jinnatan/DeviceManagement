@@ -1,6 +1,5 @@
 package com.jt.devicemanagement.deviceModel;
 
-import com.jt.devicemanagement.BaseRestControllerTest;
 import com.jt.devicemanagement.TestUtil;
 import com.jt.devicemanagement.deviceModel.api.DeviceModelDTO;
 import com.jt.devicemanagement.deviceModel.models.OS;
@@ -37,7 +36,6 @@ public class DeviceModelControllerTest{
 
     private MockMvc mockMvc;
     private DeviceModelDTO deviceModelDTO1;
-    private DeviceModelDTO returnDeviceModelDTO1;
     final String NAME = "Iphone x";
     final String DESC = "Iphone X grey";
 
@@ -53,20 +51,16 @@ public class DeviceModelControllerTest{
 
     private void createTestData() {
         deviceModelDTO1 = new DeviceModelDTO();
+        deviceModelDTO1.setId(1L);
         deviceModelDTO1.setName(NAME);
         deviceModelDTO1.setDescription(DESC);
         deviceModelDTO1.setOs(OS.ANDROID);
-
-        returnDeviceModelDTO1 = new DeviceModelDTO();
-        returnDeviceModelDTO1.setName(NAME);
-        returnDeviceModelDTO1.setDescription(DESC);
-        returnDeviceModelDTO1.setOs(OS.ANDROID);
     }
 
 
     @Test
     public void getDeviceModelById() throws Exception {
-        Mockito.when(deviceModelService.getDeviceModelById(1L)).thenReturn(returnDeviceModelDTO1);
+        Mockito.when(deviceModelService.getDeviceModelById(1L)).thenReturn(deviceModelDTO1);
         mockMvc.perform(get(DeviceModelController.BASE_URL+"/1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -85,29 +79,19 @@ public class DeviceModelControllerTest{
 
     @Test
     public void createDeviceModel() throws Exception {
-        returnDeviceModelDTO1.setId(2L);
-        Mockito.when(deviceModelService.createDeviceModel(deviceModelDTO1)).thenReturn(returnDeviceModelDTO1);
-
-
         mockMvc.perform(post(DeviceModelController.BASE_URL).contentType(MediaType.APPLICATION_JSON)
                 .content(TestUtil.asJsonString(deviceModelDTO1)))
                 .andExpect(status().isCreated());
-//                .andExpect(jsonPath("$.name", equalTo(NAME)))
-//                .andExpect(jsonPath("$.description", equalTo(DESC)))
-//                .andExpect(jsonPath("$.id", equalTo(2L)));
+
 
     }
 
     @Test
     public void updateDeviceModel() throws Exception {
-        returnDeviceModelDTO1.setName("Updated" + NAME);
-        returnDeviceModelDTO1.setDescription("Updated" + DESC);
-        Mockito.when(deviceModelService.updateDeviceModel(1L,deviceModelDTO1)).thenReturn(returnDeviceModelDTO1);
-        mockMvc.perform(put(DeviceModelController.BASE_URL+"/1").contentType(MediaType.APPLICATION_JSON)
+          mockMvc.perform(put(DeviceModelController.BASE_URL+"/1").contentType(MediaType.APPLICATION_JSON)
                 .content(TestUtil.asJsonString(deviceModelDTO1)))
                 .andExpect(status().isOk());
-//                .andExpect(jsonPath("$.name", equalTo("Updated" + NAME)))
-//                .andExpect(jsonPath("$.description", equalTo("Updated" + DESC)));
+
     }
 
     @Test
