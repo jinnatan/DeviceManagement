@@ -14,14 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class Boostrap implements CommandLineRunner {
+public class Bootstrap implements CommandLineRunner {
 
     private final DeviceModelRepository deviceModelRepository;
     private final DeviceRepository deviceRepository;
     private final UserRepository userRepository;
 
 
-    public Boostrap(final DeviceModelRepository deviceModelRepository, final DeviceRepository deviceRepository, final UserRepository userRepository) {
+    public Bootstrap(final DeviceModelRepository deviceModelRepository, final DeviceRepository deviceRepository, final UserRepository userRepository) {
         this.deviceModelRepository = deviceModelRepository;
         this.deviceRepository = deviceRepository;
         this.userRepository = userRepository;
