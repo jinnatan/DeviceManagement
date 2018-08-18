@@ -18,14 +18,14 @@ import java.util.stream.Collectors;
 @Service
 public class DeviceServiceImpl implements DeviceService {
 
-    @Autowired
-    SerialNumberPrefix serialNumberPrefix;
+    private SerialNumberPrefix serialNumberPrefix;
 
     private DeviceRepository deviceRepository;
     private DeviceMapper deviceMapper;
 
 
-    public DeviceServiceImpl(final DeviceRepository deviceRepository, final DeviceMapper deviceMapper) {
+    public DeviceServiceImpl(final SerialNumberPrefix serialNumberPrefix, final DeviceRepository deviceRepository, final DeviceMapper deviceMapper) {
+        this.serialNumberPrefix = serialNumberPrefix;
         this.deviceRepository = deviceRepository;
         this.deviceMapper = deviceMapper;
     }
