@@ -1,27 +1,26 @@
 package com.jt.devicemanagement.device.api;
 
 import com.jt.devicemanagement.deviceModel.api.BaseDeviceModelDTO;
-import com.jt.devicemanagement.deviceModel.models.DeviceModel;
 import com.jt.devicemanagement.user.api.BaseUserDTO;
 
 public class DeviceDTO extends BaseDeviceDTO {
 
-    private BaseDeviceModelDTO baseModel;
-    private BaseUserDTO baseUser;
+    private BaseDeviceModelDTO model;
+    private BaseUserDTO user;
 
-    public BaseDeviceModelDTO getBaseModel() {
-        return baseModel;
+    public BaseDeviceModelDTO getModel() {
+        return model;
     }
 
-    public void setBaseModel(final BaseDeviceModelDTO baseModel) {
-        this.baseModel = baseModel;
+    public void setModel(final BaseDeviceModelDTO model) {
+        this.model = model;
     }
 
-    public BaseUserDTO getBaseUser() {
-        return baseUser;
+    public BaseUserDTO getUser() {
+        return user;
     }
 
-    public void setBaseUser(final BaseUserDTO baseUser) {
-        this.baseUser = baseUser;
+    public void setUser(final BaseUserDTO user) {
+        this.user = user;
     }
 }

@@ -12,13 +12,11 @@ public interface DeviceMapper {
     DeviceMapper INSTANCE = Mappers.getMapper(DeviceMapper.class);
 
 
-    @Mapping(source = "deviceModel", target = "baseModel")
-    @Mapping(source = "user", target = "baseUser")
+    @Mapping(source = "deviceModel", target = "model")
     DeviceDTO DeviceToDeviceDTO(Device device);
 
 
-    @Mapping(source = "baseModel", target = "deviceModel")
-    @Mapping(source = "baseUser", target = "user")
+    @Mapping(source = "model", target = "deviceModel")
     Device DeviceDTOToDevice(DeviceDTO deviceDTO);
 
 

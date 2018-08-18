@@ -1,21 +1,19 @@
 package com.jt.devicemanagement.deviceModel.api;
 
 import com.jt.devicemanagement.device.api.BaseDeviceDTO;
-import com.jt.devicemanagement.deviceModel.models.OS;
-import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
 
 public class DeviceModelDTO extends BaseDeviceModelDTO {
 
-    private List<BaseDeviceDTO> baseDevices;
+    private List<BaseDeviceDTO> devices;
 
-    public List<BaseDeviceDTO> getBaseDevices() {
-        return baseDevices;
+    public List<BaseDeviceDTO> getDevices() {
+        return devices;
     }
 
-    public void setBaseDevices(final List<BaseDeviceDTO> baseDevices) {
-        this.baseDevices = baseDevices;
+    public void setDevices(final List<BaseDeviceDTO> devices) {
+        this.devices = devices;
     }
 
    }

@@ -10,10 +10,8 @@ public interface DeviceModelMapper {
 
     DeviceModelMapper INSTANCE = Mappers.getMapper(DeviceModelMapper.class);
 
-    @Mapping(source = "devices", target = "baseDevices")
     DeviceModelDTO DeviceModelToDeviceModelDTO(DeviceModel deviceModel);
 
-    @Mapping(source = "baseDevices", target = "devices")
     DeviceModel DeviceModelDTOToDeviceModel(DeviceModelDTO deviceModelDTO);
 
 }
