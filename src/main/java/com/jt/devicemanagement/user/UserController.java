@@ -48,7 +48,7 @@ public class UserController {
 
     @GetMapping("/deivceSerialNumber/{serialNumber}")
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Get all user by ID")
+    @ApiOperation(value = "Get user by serial number")
     public UserDTO getUserById(@PathVariable String serialNumber){
         return userService.getUserByDeviceSerialNumber(serialNumber);
     }
