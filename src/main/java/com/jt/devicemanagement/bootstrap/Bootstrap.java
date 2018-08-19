@@ -12,9 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Component
 public class Bootstrap implements CommandLineRunner {
 
@@ -34,7 +31,9 @@ public class Bootstrap implements CommandLineRunner {
 
     @Override
     public void run(final String... args) throws Exception {
-        loadDeviceModels();
+        if (deviceModelRepository.count() == 0) {
+            loadDeviceModels();
+        }
         this.testSample();
 
     }
