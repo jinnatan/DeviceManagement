@@ -5,16 +5,18 @@ import com.jt.devicemanagement.device.models.Device;
 import com.jt.devicemanagement.deviceModel.models.DeviceModel;
 import com.jt.devicemanagement.deviceModel.models.OS;
 import com.jt.devicemanagement.deviceModel.DeviceModelRepository;
+import com.jt.devicemanagement.samples.GreetingService;
 import com.jt.devicemanagement.user.UserRepository;
 import com.jt.devicemanagement.user.models.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Component
 public class Bootstrap implements CommandLineRunner {
+
+    @Autowired
+    GreetingService greetingService;
 
     private final DeviceModelRepository deviceModelRepository;
     private final DeviceRepository deviceRepository;
@@ -29,7 +31,10 @@ public class Bootstrap implements CommandLineRunner {
 
     @Override
     public void run(final String... args) throws Exception {
-        loadDeviceModels();
+        if (deviceModelRepository.count() == 0) {
+            loadDeviceModels();
+        }
+        this.testSample();
 
     }
 
@@ -77,5 +82,12 @@ public class Bootstrap implements CommandLineRunner {
         userRepository.save(user2);
         deviceRepository.save(device2);
     }
+
+    private void testSample() {
+        System.out.println("------------Sample testing---------------");
+        System.out.println(greetingService.getGreeting());
+        System.out.println("-----------------------------------------");
+    }
+
 
 }

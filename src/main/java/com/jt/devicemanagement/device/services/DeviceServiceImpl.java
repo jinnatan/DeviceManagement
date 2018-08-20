@@ -4,9 +4,11 @@ import com.jt.devicemanagement.device.DeviceRepository;
 import com.jt.devicemanagement.device.api.DeviceDTO;
 import com.jt.devicemanagement.device.api.DeviceMapper;
 import com.jt.devicemanagement.device.models.Device;
+import com.jt.devicemanagement.device.util.SerialNumberPrefix;
 import com.jt.devicemanagement.deviceModel.api.DeviceModelDTO;
 import com.jt.devicemanagement.deviceModel.models.DeviceModel;
 import com.jt.devicemanagement.exceptions.EntityNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,10 +18,14 @@ import java.util.stream.Collectors;
 @Service
 public class DeviceServiceImpl implements DeviceService {
 
+    private SerialNumberPrefix serialNumberPrefix;
+
     private DeviceRepository deviceRepository;
     private DeviceMapper deviceMapper;
 
-    public DeviceServiceImpl(final DeviceRepository deviceRepository, final DeviceMapper deviceMapper) {
+
+    public DeviceServiceImpl(final SerialNumberPrefix serialNumberPrefix, final DeviceRepository deviceRepository, final DeviceMapper deviceMapper) {
+        this.serialNumberPrefix = serialNumberPrefix;
         this.deviceRepository = deviceRepository;
         this.deviceMapper = deviceMapper;
     }
@@ -49,6 +55,8 @@ public class DeviceServiceImpl implements DeviceService {
 
     @Override
     public DeviceDTO createDevice(final DeviceDTO deviceDTO) {
+        String serialNumber = deviceDTO.getSerialNumber();
+        deviceDTO.setSerialNumber(serialNumberPrefix.getPrefix() + serialNumber);
         return saveAndReturnDeviceDTO(deviceMapper.DeviceDTOToDevice(deviceDTO));
     }
 
